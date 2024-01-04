@@ -1,0 +1,42 @@
+from tkinter import *
+from tkinter import ttk,messagebox
+import googletrans
+from PIL import Image,ImageTk
+from googletrans import Translator
+
+root= Tk()
+root.title('Google Translator')
+root.geometry('800x400')
+root.resizable(False,False)
+root.configure(background='white')
+
+# Arrow
+arrow = Image.open('arrow.png')  # Provide the correct path to 'download.png'
+arrow_img = Image.open('arrow.png')  # Provide the correct path to 'arrow.png'
+width, height = 60, 60
+arrow_img1 = arrow_img.resize((width, height))
+arrowimg = arrow_img1.resize((width, height))
+arrows = ImageTk.PhotoImage(arrowimg)
+
+arrow_label = Label(root, image=arrows, bg="black", pady=100)
+arrow_label.place(x=460,y=50)
+
+language= googletrans.LANGUAGES
+languageV=list(language.values())
+lang1=language.keys()
+
+# first combobox
+combo1= ttk.Combobox(root,values=languageV,font='Roboto 12',state='r')
+combo1.place(x=110,y=20)
+combo1.set('English')
+
+label1=Label(root,text='English',font='segoe 30 bold',bg='white',width=18,bd=5,relief=GROOVE)
+label1.place(x=10,y=50)
+
+# second combobox
+combo2= ttk.Combobox(root,values=languageV,font='Roboto 12',state='r')
+combo2.place(x=650,y=20)
+combo2.set('Select Languae')
+label2=Label(root,text='English',font='segoe 30 bold',bg='white',width=18,bd=5,relief=GROOVE)
+label2.place(x=10,y=50)
+root.mainloop()
